@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨幸 | 个人简介</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            padding: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            background: white;
+            box-shadow: 0 8px 30px var(--shadow);
+            border-radius: 16px;
+        }
+        
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 2px solid var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .profile-info {
+            flex: 2;
+        }
+        
+        .profile-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .profile-avatar {
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 52px;
+            font-weight: bold;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        h2 {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.2rem 0;
+        }
+        
+        .tag {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+        }
+        
+        .mentor {
+            font-style: italic;
+            color: var(--secondary);
+            margin-bottom: 1.2rem;
+            padding: 1rem;
+            background: rgba(37, 99, 235, 0.05);
+            border-radius: 8px;
+        }
+        
+        .roles {
+            margin: 1.5rem 0;
+            font-weight: 500;
+        }
+        
+        .roles ul {
+            margin-top: 0.8rem;
+        }
+        
+        .roles li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .roles li::before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .summary {
+            background: linear-gradient(to right, rgba(37, 99, 235, 0.1), transparent);
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, var(--primary), transparent);
+            margin: 2.5rem 0;
+            border-radius: 2px;
+        }
+        
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            margin-right: 0.8rem;
+            font-size: 1rem;
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+        }
+        
+        .project {
+            background: rgba(37, 99, 235, 0.03);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform 0.2s;
+        }
+        
+        .project:hover {
+            transform: translateY(-2px);
+        }
+        
+        .project-title {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .evidence {
+            background: linear-gradient(to right, rgba(37, 99, 235, 0.1), transparent);
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 3px solid var(--primary);
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+        
+        .timeline {
+            margin: 2rem 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 1.2rem;
+            padding: 1rem;
+            background: rgba(37, 99, 235, 0.03);
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(4px);
+        }
+        
+        .timeline-date {
+            min-width: 180px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .timeline-content {
+            flex: 1;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+        
+        .skill {
+            background: rgba(37, 99, 235, 0.05);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px var(--shadow);
+            transition: transform 0.2s;
+        }
+        
+        .skill:hover {
+            transform: translateY(-2px);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+        
+        th {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.2rem;
+            text-align: left;
+        }
+        
+        td {
+            padding: 1.2rem;
+            border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover {
+            background-color: rgba(37, 99, 235, 0.02);
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.2s;
+            border-bottom: 1px dashed var(--primary);
+            padding-bottom: 2px;
+        }
+        
+        a:hover {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+                margin: 1rem auto;
+            }
+            
+            header {
+                flex-direction: column-reverse;
+            }
+            
+            .profile-image {
+                justify-content: center;
+                margin-bottom: 1.5rem;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-date {
+                margin-bottom: 0.5rem;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile-info">
+                <h1>杨幸</h1>
+                <h2>浙江大学马克思主义学院 博士研究生</h2>
+                
+                <div class="tag-container">
+                    <div class="tag">心理学本硕</div>
+                    <div class="tag">思想政治教育专业博士在读</div>
+                </div>
+                
+                <div class="mentor">
+                    博导：马建青（二级教授/博导）<br>
+                    国家万人计划教学名师 国务院政府特殊津贴专家
+                </div>
+            </div>
+            
+            <div class="profile-image">
+                <div class="profile-avatar">杨</div>
+            </div>
+        </header>
+        
+        <div class="roles">
+            <strong>个人简介：</strong>
+            <ul>
+                <li>全国首部《大学生心理健康教育教程》数字教材副主编｜强鹰2025机器人班入围者</li>
+                <li>"AI思政课一点通" "AI心理一点通" 项目 核心开发者</li>
+                <li>浙江科技大学、厦门医学院等单位邀约讲授者｜贵州都匀市政府招商引资政策实践意向合作｜"陈行甲AI心理医生" 智能向善志愿网络"齐家AI"开发成员</li>
+            </ul>
+        </div>
+        
+        <div class="summary">
+            专注于生成式人工智能在思想政治教育、心理健康、家庭育儿与教育技术融合领域的交叉应用，具备从大模型微调、RAG架构设计、智能体开发到Prompt工程的完整技术体系，兼具教学产品设计与实景落地经验。特别擅长教育场景需求建模、知识图谱组织与对话风格调优，主担任项目"教育场景落地"与"可视化AI产品设计"开发者、负责人。
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">📘</span>
+                <h3>重大成果与职责担当</h3>
+            </div>
+            
+            <p>全国首部《大学生心理健康教育教程》数字教材副主编，独立承担AI交互系统、心理测评数据结构、小游戏开发、数字人生成与AIGC视频正念引导等内容开发，是该教材智能化转型的关键实操者之一。该数字教材拟被列为全国高校教材数字化升级样板。</p>
+            
+            <div class="evidence">
+                <span class="icon">🔹</span> <strong>可提供证明材料：</strong>教材封面 + AI功能截图 + AIGC正念引导视频片段 + 教材2分钟展示视频
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">🔧</span>
+                <h3>主导项目实践与平台化应用</h3>
+            </div>
+            
+            <div class="project">
+                <div class="project-title">
+                    <span class="icon">🔹</span>
+                    <h4>《浙大·AI思政课一点通》</h4>
+                </div>
+                <p>全国首个基于思想政治教育领域大模型的智能体型产品，已在浙江大学等十余所高校落地，2024.09公开上线并免费使用，累计用户量4500+人，使用量超38,000次。覆盖助学、助教、助研、助心四大场景，功能包含：一键备课、政策解读、课堂互动、作业智能评分、学生心理辅助等，入选浙江大学"AI for Education"重点项目、典型案例。</p>
+                
+                <div class="evidence">
+                    <span class="icon">🔹</span> <strong>可提供证明材料：</strong>开发时间轴图、项目主海报、双二维码页（产品入口码、功能说明码）
+                </div>
+            </div>
+            
+            <div class="project">
+                <div class="project-title">
+                    <span class="icon">🔹</span>
+                    <h4>《浙大·AI心理一点通》</h4>
+                </div>
+                <p>面向心理健康领域构建的垂直大模型智能体，已在百度、浙大先生多平台部署，支持心理危机识别、共情对话风格调节、SFBT辅导流程模拟与咨询式AI交互，提供高可信度心理支持解决方案。具备完整知识库、记忆变量与对话多轮追踪能力。</p>
+                
+                <div class="evidence">
+                    <span class="icon">🔹</span> <strong>可提供证明材料：</strong>产品使用二维码、主界面截图、心理危机调度流程图
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">📊</span>
+                <h3>发展历程与平台认可</h3>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023年2月--2024年4月</div>
+                    <div class="timeline-content">完成全国首套AI+心理健康数字教材研发，发布全国首个LLM+RAG心理咨询问答机器人（助教）</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2023年12月--2024年3月</div>
+                    <div class="timeline-content">主导"AI思政课一点通"入选浙江大学首批"AI for Education"教育改革重点项目（170+申请/16立项，其中重点8项）</div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2024年9月</div>
+                    <div class="timeline-content">完成3.0版系统部署，试用落地浙江大学、浙江万里学院、浙江科技大学、厦门医学院、新疆多所大学等</div>
+                </div>
+            </div>
+        </div>
+<div class="section">
+    <div class="section-title">
+        <span class="icon">📎</span>
+        <h3>相关证明材料一览</h3>
+    </div>
+    
+    <style>
+        /* 添加图片相关样式 */
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .material-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform 0.2s;
+        }
+        
+        .material-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .material-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+        }
+        
+        .material-content {
+            padding: 1rem;
+        }
+        
+        .material-title {
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .material-links {
+            margin-top: 0.5rem;
+        }
+    </style>
+
+    <div class="materials-grid">
+        <!-- AI项目时间轴图 -->
+        <div class="material-card">
+            <img src="AI项目时间轴图.png" alt="AI项目发展时间轴" class="material-image">
+            <div class="material-content">
+                <div class="material-title">AI项目时间轴图</div>
+                <div class="material-links">
+                    <a href="https://mp.weixin.qq.com/s/1ODWhim62jt0dUqYx7Eb-A">查看项目详情</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI思政课功能说明二维码 -->
+        <div class="material-card">
+            <img src="AI思政课一点通功能说明二维码.png" alt="功能说明二维码" class="material-image">
+            <div class="material-content">
+                <div class="material-title">AI思政课功能说明二维码</div>
+                <div class="material-links">
+                    <a href="https://mp.weixin.qq.com/s/WNxxce2OUFOmBiDzEFxWGg">查看功能介绍</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 陈行甲AI心理医生项目 -->
+        <div class="material-card">
+            <img src="陈行甲AI心理医生·合影.png" alt="技术攻坚闭门会合影" class="material-image">
+            <div class="material-content">
+                <div class="material-title">陈行甲AI心理医生·技术攻坚闭门会合影</div>
+                <div class="material-links">
+                    <a href="https://mp.weixin.qq.com/s/b5IuYut652TlvLmTgL_VSA">查看项目新闻</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 讲座项目报道 -->
+        <div class="material-card">
+            <img src="讲座项目媒体报道封面集.jpg" alt="媒体报道封面集" class="material-image">
+            <div class="material-content">
+                <div class="material-title">讲座及项目媒体报道封面集</div>
+                <p>查看相关报道</p>
+            </div>
+        </div>
+
+        <!-- 入围强鹰2025 -->
+        <div class="material-card">
+            <img src="入围强鹰 2025 机器人班.png" alt="强鹰2025机器人班" class="material-image">
+            <div class="material-content">
+                <div class="material-title">入围强鹰2025机器人班</div>
+                <div class="material-links">
+                    <a href="https://mp.weixin.qq.com/s/fKz-DCkmW9Fb2xciHbwe_w">查看入围详情</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 浙大AI心理一点通 -->
+        <div class="material-card">
+            <img src="浙大AI思政课一点通招商介绍.jpg" alt="浙大AI思政课一点通招商介绍" class="material-image">
+            <div class="material-content">
+                <div class="material-title">浙大AI思政课一点通招商介绍</div>
+                <p>面向政府、高校等机构开展AI专题讲座与培训</p>
+            </div>
+        </div>
+    </div>
+
+<table>
+    <thead>
+        <tr>
+            <th>模块</th>
+            <th>名称</th>
+            <th>相关链接</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>教材展示</td>
+            <td>大学生心理健康教育教程（数字教材）</td>
+            <td>
+                <a href="https://mp.weixin.qq.com/s/xUCfy6Q6l9oQAjh9yG-8AQ">查看教材相关报道</a> | 
+                <a href="https://zjupsyebook.godaddysites.com/">访问教材介绍网页</a>
+            </td>
+        </tr>
+        <tr>
+            <td>AI Agent产品</td>
+            <td>AI思政课一点通</td>
+            <td>
+                <a href="https://appbuilder.baidu.com/s/qgbCoWB5">体验AI思政课一点通</a>
+            </td>
+        </tr>
+        <tr>
+            <td>AI Agent产品</td>
+            <td>AI心理一点通</td>
+            <td>
+                <a href="https://appbuilder.bce.baidu.com/ai_apaas/share/home?short_code=Fu5W7RmrV8g&source=web">体验AI心理一点通</a>
+            </td>
+        </tr>
+        <tr>
+            <td>项目报道</td>
+            <td>AI思政课功能展示</td>
+            <td>
+                <a href="https://nicolazinx.github.io/">查看详细功能介绍</a>
+            </td>
+        </tr>
+        <tr>
+            <td>团队项目</td>
+            <td>强鹰2025机器人班</td>
+            <td>
+                <a href="https://mp.weixin.qq.com/s/IRvhDfASr6FAQVk_g7OhQw">了解项目详情</a>
+            </td>
+            <tr>
+            <td rowspan="6">项目报道与培训讲座</td>
+            <td>学术会议相关成果评优</td>
+            <td><a href="https://mp.weixin.qq.com/s/Gk9NAdyIuVkCY0GaOTzy8A">查看详情</a></td>
+        </tr>
+        <tr>
+            <td>浙大AI垂域模型建设与应用分享会</td>
+            <td><a href="https://mp.weixin.qq.com/s/HgG7fvp7UK-wRqhCTZ8w5Q">查看详情</a></td>
+        </tr>
+        <tr>
+            <td>街道AI创新应用实践与新质生产力宣讲</td>
+            <td><a href="https://mp.weixin.qq.com/s/p8jZi1feNg8ZyZWUv2IYzQ">查看详情</a></td>
+        </tr>
+        <tr>
+            <td>蒋村街道讲座及宣讲节选</td>
+            <td><a href="https://mp.weixin.qq.com/s/rHU3cxlx3eWsFrbjesuxLA">查看详情</a></td>
+        </tr>
+        <tr>
+            <td>走进中小学创新培训课程及宣讲节选</td>
+            <td><a href="https://mp.weixin.qq.com/s/pTEe01OOZ3fTvosIXuKg6g">查看详情</a></td>
+        </tr>
+        <tr>
+            <td>普华创投项目介绍（创意宣讲）</td>
+            <td><a href="https://mp.weixin.qq.com/s/YiQh9fBf5bIIJS98-be_FA">查看详情</a></td>
+        </tr>
+    </tbody>
+</table>
+    </div>
+    </div>
+</body>
+</html>
