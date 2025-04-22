@@ -331,6 +331,31 @@
                 overflow-x: auto;
             }
         }
+/* 限制头像尺寸并保持圆形 */
+.profile-photo{
+    width:220px;          /* 头像直径，可自行改成 180px、200px 等 */
+    height:293px;
+    object-fit:cover;     /* 填充同时裁剪，防止变形 */
+    box-shadow:0 4px 20px rgba(37,99,235,.25);
+}
+
+/* 保证头像区域不会被拉伸 */
+.profile-image{
+    flex:1;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+}
+
+/* 小屏再缩一点，避免撑满屏幕 */
+@media(max-width:768px){
+    .profile-photo{
+        width:120px;
+        height:120px;
+    }
+}
+        }
+
     </style>
 </head>
 <body>
@@ -351,10 +376,9 @@
                 </div>
             </div>
             
-            <div class="profile-image">
-                <div class="profile-avatar">杨</div>
-            </div>
-        </header>
+            <div class="profile-image"><img src="profile-image.jpg" alt="杨幸个人照片" class="profile-photo">
+    </div>
+</header>
         
         <div class="roles">
             <strong>个人简介：</strong>
@@ -436,8 +460,18 @@
                 
                 <div class="timeline-item">
                     <div class="timeline-date">2024年9月</div>
-                    <div class="timeline-content">完成3.0版系统部署，试用落地浙江大学、浙江万里学院、浙江科技大学、厦门医学院、新疆多所大学等</div>
+                    <div class="timeline-content">完成2.0版系统部署，试用落地浙江大学、浙江万里学院、浙江科技大学、厦门医学院等多所大学</div>
                 </div>
+ <div class="timeline-item">
+                    <div class="timeline-date">2025年2月</div>
+                    <div class="timeline-content">完成3.0版品牌升级，上线浙大先生平台，免费对全国827所院校开放，浙大马院将其带往新疆多所大学等</div>
+                </div>
+
+      <div class="timeline-item">
+                    <div class="timeline-date">2025 年 4 月</div>
+                    <div class="timeline-content">升级至 4.0 版本：三大模块（知识问答 / 心理支持 / 价值观对话）高度独立协同；用户意图识别更精准，交互更具亲和力与引导性；支持 SFBT 多轮心理对话；实现模块自动调用、用户画像记忆等突破，成为国内首个具“人格感 + 模块调用智能性”的思政 AI 智能体。</div>
+                </div>
+
             </div>
         </div>
 <div class="section">
@@ -619,7 +653,7 @@
             <td><a href="https://mp.weixin.qq.com/s/pTEe01OOZ3fTvosIXuKg6g">查看详情</a></td>
         </tr>
         <tr>
-            <td>普华创投项目介绍（创意宣讲）</td>
+            <td>普华创投项目介绍（招商引资）</td>
             <td><a href="https://mp.weixin.qq.com/s/YiQh9fBf5bIIJS98-be_FA">查看详情</a></td>
         </tr>
     </tbody>
