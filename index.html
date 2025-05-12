@@ -331,31 +331,81 @@
                 overflow-x: auto;
             }
         }
-/* 限制头像尺寸并保持圆形 */
-.profile-photo{
-    width:220px;          /* 头像直径，可自行改成 180px、200px 等 */
-    height:293px;
-    object-fit:cover;     /* 填充同时裁剪，防止变形 */
-    box-shadow:0 4px 20px rgba(37,99,235,.25);
-}
-
-/* 保证头像区域不会被拉伸 */
-.profile-image{
-    flex:1;
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
-}
-
-/* 小屏再缩一点，避免撑满屏幕 */
-@media(max-width:768px){
-    .profile-photo{
-        width:120px;
-        height:120px;
-    }
-}
+        /* 限制头像尺寸并保持圆形 */
+        .profile-photo{
+            width:220px;          /* 头像直径，可自行改成 180px、200px 等 */
+            height:293px;
+            object-fit:cover;     /* 填充同时裁剪，防止变形 */
+            box-shadow:0 4px 20px rgba(37,99,235,.25);
         }
 
+        /* 保证头像区域不会被拉伸 */
+        .profile-image{
+            flex:1;
+            display:flex;
+            justify-content:flex-end;
+            align-items:center;
+        }
+
+        /* 小屏再缩一点，避免撑满屏幕 */
+        @media(max-width:768px){
+            .profile-photo{
+                width:120px; /* Note: This was 120px for width and height, but your image is not square. Adjust if needed. */
+                height:160px; /* Adjusted height to maintain aspect ratio for profile-image.jpg if it's 220x293 */
+            }
+        }
+
+        /* --- 新增CSS样式 --- */
+        .clickable-text {
+            color: var(--primary); /* 链接颜色 */
+            text-decoration: underline;
+            cursor: pointer;
+            margin: 0 3px; /* 给链接之间一些间距 */
+            transition: color 0.2s;
+        }
+
+        .clickable-text:hover {
+            color: var(--accent); /* 鼠标悬停时的颜色 */
+        }
+
+        .clickable-text.active { /* 当链接被选中时的样式 */
+            font-weight: bold;
+            color: #dc3545; /* 例如改成红色 */
+            text-decoration: none;
+        }
+
+        .content-display-area {
+            display: none; /* 默认隐藏 */
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #fdfdfd; /* 略微不同的背景色以区分 */
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .content-display-area.active {
+            display: block; /* 点击后显示 */
+        }
+
+        .content-display-area h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .content-display-area img {
+            max-width: 100%; /* 图片宽度不超过其容器 */
+            height: auto;
+            display: block; /* 让图片独占一行，方便控制间距 */
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #eee;
+        }
+        .content-display-area p {
+            margin-bottom: 10px;
+        }
+         /* --- 新增CSS样式结束 --- */
     </style>
 </head>
 <body>
@@ -404,7 +454,41 @@
             <p>全国首部《大学生心理健康教育教程》数字教材副主编，独立承担AI交互系统、心理测评数据结构、小游戏开发、数字人生成与AIGC视频正念引导等内容开发，是该教材智能化转型的关键实操者之一。该数字教材拟被列为全国高校教材数字化升级样板。</p>
             
             <div class="evidence">
-                <span class="icon">🔹</span> <strong>点击查看详情：</strong>教材封面 + AI功能截图 + AIGC正念引导视频片段 + 教材2分钟展示视频
+                <span class="icon">🔹</span> <strong>点击查看详情：</strong>
+                <span class="clickable-text" data-target="s1-jiaocai-fengmian">教材封面</span> + 
+                <span class="clickable-text" data-target="s1-ai-jietu">AI助教🤖</span> + 
+    <span class="clickable-text" data-target="s1-zhishitupu-jietu">知识图谱</span> + 
+
+                <span class="clickable-text" data-target="s1-aigc-shipin">AIGC正念引导视频片段</span> + 
+                <span class="clickable-text" data-target="s1-jiaocai-zhanshi">教材2分钟展示视频</span>
+            </div>
+            <!-- 内容展示区域 for 主要成果与职责担当 -->
+            <div id="s1-jiaocai-fengmian" class="content-display-area">
+                <h4>教材封面</h4>
+                          <img src="数字教材封面.png" alt="教材封面图"> 
+            <p><em>注：点击 <a href="https://zjupsyebook.godaddysites.com/" target="_blank">查看教材介绍</a> 网页版</em></p>
+
+            </div>
+            <div id="s1-ai-jietu" class="content-display-area">
+                <h4>AI助教功能</h4>
+               <p><em> `<video width="320" height="240" controls src="AIpsy_aigc_video.mp4"></video>`</em></p>
+                <p><em>注：此视频为数字教材·AI助教功能·实际使用情况录屏</em></p>
+            </div>
+            <div id="s1-zhishitupu-jietu" class="content-display-area">
+        <h4>知识图谱</h4>
+                          <img src="zhishitupu.png" alt="知识图谱截图"> 
+            <p><em>注：点击 <a href="https://zjupsyebook.godaddysites.com/" target="_blank">查看教材介绍</a> 网页版</em></p>
+
+            </div>
+            <div id="s1-aigc-shipin" class="content-display-area">
+                <h4>AIGC正念引导视频片段</h4>
+                       <p><em>示例1：点击查看 <a href="https://mymicrolesson.lessonplan.cn/home/editor/packet/57c6d890-09d8-11ef-845a-d32d38b68068?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyR3VpZCI6IjY0NzdlNDkzLTMxMTYtMzgyNi1iOTI2LWRmZjIzYjc2YzAzMSIsInR5cGUiOiJ0ZWFjaGVyIiwiaWF0IjoxNzQ3MDM1MTAyLCJleHAiOjE3NDcwNzExMDJ9.oprurXuYE32oMJ5KwEHgq4j5MuWMnOAe-EMrZI6nbX8" target="_blank">AIGC视频</a> 正念呼吸</em></p>
+     <p><em>示例2：点击查看<a href="https://mymicrolesson.lessonplan.cn/home/editor/packet/297940a0-0cde-11ef-ba1a-1d892c4f9046" target="_blank">AIGC视频</a> 吃葡萄干</em></p>
+                <img src="AIGCVIDEO.png" alt="AIGC视频预览 (占位图)">
+            </div>
+            <div id="s1-jiaocai-zhanshi" class="content-display-area">
+                <h4>教材2分钟展示视频</h4>
+          <p><em>点击查看 <a href="https://zjupsyebook.godaddysites.com/" target="_blank">2min介绍视频</a> </em></p>
             </div>
         </div>
         
@@ -424,7 +508,30 @@
                 <p>全国首个基于思想政治教育领域大模型的智能体型产品，已在浙江大学等十余所高校落地，2024.09公开上线并免费使用，累计用户量4500+人，使用量超38,000次。覆盖助学、助教、助研、助心四大场景，功能包含：一键备课、政策解读、课堂互动、作业智能评分、学生心理辅助等，入选浙江大学"AI for Education"重点项目、典型案例。</p>
                 
                 <div class="evidence">
-                    <span class="icon">🔹</span> <strong>点击查看详情：</strong>开发时间轴图、项目主海报、双二维码页（产品入口码、功能说明码）
+                    <span class="icon">🔹</span> <strong>点击查看详情：</strong>
+                    <span class="clickable-text" data-target="s2-shijianzhou">开发时间轴图</span>、
+                    <span class="clickable-text" data-target="s2-haibao">项目主海报</span>、
+                    <span class="clickable-text" data-target="s2-erweima">双二维码页（产品入口码、功能说明码）</span>
+                </div>
+                 <!-- 内容展示区域 for 《浙大·AI思政课一点通》 -->
+                <div id="s2-shijianzhou" class="content-display-area">
+                    <h4>开发时间轴图</h4>
+                    <img src="AI项目时间轴图.png" alt="AI项目时间轴图">
+                </div>
+                <div id="s2-haibao" class="content-display-area">
+                    <h4>项目主海报</h4>
+                    <img src="浙大·AI思政课一点通主海报.png" alt="浙大·AI思政课一点通主海报">
+    <p><em>注：杨幸：担任马建青教授团队系列项目·技术骨干</em></p>
+
+                </div>
+                <div id="s2-erweima" class="content-display-area">
+                    <h4>双二维码页</h4>
+                    <p><strong>产品入口码 (AI思政课一点通):</strong></p>
+                    <img src="placeholder_sizhengke_entry_qr.png" alt="AI思政课一点通 产品入口二维码 (占位图)">
+                    <p><em>注：可点击 <a href="https://appbuilder.baidu.com/s/qgbCoWB5" target="_blank">AI思政课一点通体验链接</a> 一键直达</em></p>
+                    <p><strong>功能说明码:</strong></p>
+                    <img src="AI思政课一点通迭代.png" alt="AI思政课一点通功能说明二维码">
+                    <p><em>注：可点击 <a href="https://nicolazinx.github.io/" target="_blank">AI思政课一点通 附加功能展示网页</a> 一键直达</em></p>
                 </div>
             </div>
             
@@ -436,7 +543,25 @@
                 <p>面向心理健康领域构建的垂直大模型智能体，已在百度、浙大先生多平台部署，支持心理危机识别、共情对话风格调节、SFBT辅导流程模拟与咨询式AI交互，提供高可信度心理支持解决方案。具备完整知识库、记忆变量与对话多轮追踪能力。</p>
                 
                 <div class="evidence">
-                    <span class="icon">🔹</span> <strong>点击查看详情：</strong>产品使用二维码、主界面截图、心理危机调度流程图
+                    <span class="icon">🔹</span> <strong>点击查看详情：</strong>
+                    <span class="clickable-text" data-target="s3-chanpinerweima">产品使用二维码</span>、
+                    <span class="clickable-text" data-target="s3-zhujiemian">主界面截图</span>、
+                    <span class="clickable-text" data-target="s3-liuchengtu">心理危机调度流程图</span>
+                </div>
+                <!-- 内容展示区域 for 《浙大·AI心理一点通》 -->
+                <div id="s3-chanpinerweima" class="content-display-area">
+                    <h4>产品使用二维码 (AI心理一点通)</h4>
+                    <img src="浙大AI心理一点通入口码.png" alt="浙大AI心理一点通入口码">
+                </div>
+                <div id="s3-zhujiemian" class="content-display-area">
+                    <h4>主界面截图</h4>
+                    <img src="placeholder_xinli_main_ui.png" alt="AI心理一点通主界面截图 (占位图)">
+                    <p><em>注：该图为AI心理一点通的网页版主界面截图（还有小程序版）。</em></p>
+                </div>
+                <div id="s3-liuchengtu" class="content-display-area">
+                    <h4>心理危机调度流程图</h4>
+                    <img src="xinli-weiji-liuchengtu.png" alt="心理危机调度流程图">
+                    <p><em>注：AI心理一点通技术路线图（心理机器人·后台调度·流程逻辑）</em></p>
                 </div>
             </div>
         </div>
@@ -462,203 +587,254 @@
                     <div class="timeline-date">2024年9月</div>
                     <div class="timeline-content">完成2.0版系统部署，试用落地浙江大学、浙江万里学院、浙江科技大学、厦门医学院等多所大学</div>
                 </div>
- <div class="timeline-item">
+                 <div class="timeline-item">
                     <div class="timeline-date">2025年2月</div>
                     <div class="timeline-content">完成3.0版品牌升级，上线浙大先生平台，免费对全国827所院校开放，浙大马院将其带往新疆多所大学等</div>
                 </div>
 
-      <div class="timeline-item">
+                <div class="timeline-item">
                     <div class="timeline-date">2025 年 4 月</div>
                     <div class="timeline-content">升级至 4.0 版本：三大模块（知识问答 / 心理支持 / 价值观对话）高度独立协同；用户意图识别更精准，交互更具亲和力与引导性；支持 SFBT 多轮心理对话；实现模块自动调用、用户画像记忆等突破，成为国内首个具“人格感 + 模块调用智能性”的思政 AI 智能体。</div>
                 </div>
 
             </div>
         </div>
-<div class="section">
-    <div class="section-title">
-        <span class="icon">📎</span>
-        <h3>相关证明材料一览</h3>
-    </div>
-    
-    <style>
-        /* 添加图片相关样式 */
-        .materials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        
-        .material-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px var(--shadow);
-            transition: transform 0.2s;
-        }
-        
-        .material-card:hover {
-            transform: translateY(-4px);
-        }
-        
-        .material-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 1px solid rgba(37, 99, 235, 0.1);
-        }
-        
-        .material-content {
-            padding: 1rem;
-        }
-        
-        .material-title {
-            font-weight: bold;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .material-links {
-            margin-top: 0.5rem;
-        }
-    </style>
+        <div class="section">
+            <div class="section-title">
+                <span class="icon">📎</span>
+                <h3>相关证明材料一览</h3>
+            </div>
+            
+            <style>
+                /* 添加图片相关样式 */
+                .materials-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 1.5rem;
+                    margin: 1.5rem 0;
+                }
+                
+                .material-card {
+                    background: white;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    box-shadow: 0 4px 12px var(--shadow);
+                    transition: transform 0.2s;
+                }
+                
+                .material-card:hover {
+                    transform: translateY(-4px);
+                }
+                
+                .material-image {
+                    width: 100%;
+                    height: 200px;
+                    object-fit: cover;
+                    border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+                }
+                
+                .material-content {
+                    padding: 1rem;
+                }
+                
+                .material-title {
+                    font-weight: bold;
+                    color: var(--secondary);
+                    margin-bottom: 0.5rem;
+                }
+                
+                .material-links {
+                    margin-top: 0.5rem;
+                }
+            </style>
 
-    <div class="materials-grid">
-        <!-- AI项目时间轴图 -->
-        <div class="material-card">
-            <img src="AI项目时间轴图.png" alt="AI项目发展时间轴" class="material-image">
-            <div class="material-content">
-                <div class="material-title">AI项目时间轴图</div>
-                <div class="material-links">
-                    <a href="https://mp.weixin.qq.com/s/1ODWhim62jt0dUqYx7Eb-A">查看项目详情</a>
+            <div class="materials-grid">
+                <!-- AI项目时间轴图 -->
+                <div class="material-card">
+                    <img src="AI项目时间轴图.png" alt="AI项目发展时间轴" class="material-image">
+                    <div class="material-content">
+                        <div class="material-title">AI项目时间轴图</div>
+                        <div class="material-links">
+                            <a href="https://mp.weixin.qq.com/s/1ODWhim62jt0dUqYx7Eb-A">查看AI+德法课详情</a>
+                        </div>
+                    </div>
+                </div>
+
+              <!-- AI思政课版本迭代说明 -->
+                <div class="material-card">
+                    <img src="1747038559134.jpg"alt=“版本介绍二维码" class="material-image">
+                    <div class="material-content">
+                        <div class="material-title">AI思政课一点通发展历程</div>
+                        <div class="material-links">
+                            <a href="https://nicolazinx.github.io/SZYDT-1.0-4.0-update-site/">点击查看1.0-4.0版本说明书</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- AI思政课功能说明二维码 -->
+                <div class="material-card">
+                    <img src="AI思政课一点通功能说明二维码.png" alt="功能说明二维码" class="material-image">
+                    <div class="material-content">
+                        <div class="material-title">AI思政课功能说明二维码</div>
+                        <div class="material-links">
+                            <a href="https://mp.weixin.qq.com/s/WNxxce2OUFOmBiDzEFxWGg">查看相关新闻</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 陈行甲AI心理医生项目 -->
+                <div class="material-card">
+                    <img src="陈行甲AI心理医生·合影.png" alt="技术攻坚闭门会合影" class="material-image">
+                    <div class="material-content">
+                        <div class="material-title">陈行甲AI心理医生·技术攻坚闭门会合影</div>
+                        <div class="material-links">
+                            <a href="https://mp.weixin.qq.com/s/b5IuYut652TlvLmTgL_VSA">查看项目新闻</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 讲座项目报道 -->
+                <div class="material-card">
+                    <img src="讲座项目媒体报道封面集.jpg" alt="媒体报道封面集" class="material-image">
+                    <div class="material-content">
+                        <div class="material-title">讲座及项目媒体报道封面集</div>
+                        <p>查看相关报道</p>
+                    </div>
+                </div>
+
+                <!-- 录取至浙大2025 -->
+                <div class="material-card">
+                    <img src="入围强鹰2025机器人班.png" alt="强鹰2025机器人班" class="material-image">
+                    <div class="material-content">
+                        <div class="material-title">进入强鹰2025机器人班</div>
+                        <div class="material-links">
+                            <a href="https://mp.weixin.qq.com/s/fKz-DCkmW9Fb2xciHbwe_w">查看相关新闻</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 浙大AI心理一点通 -->
+                <div class="material-card">
+                    <img src="浙大AI思政课一点通招商介绍.jpg" alt="浙大AI思政课一点通公益推广" class="material-image">
+                    <div class="material-content">
+                        <div class="material-title">浙大AI思政课一点通公益推广（面向贵州都匀市政府）</div>
+                        <p>面向政府、高校等机构开展AI专题讲座与培训</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- AI思政课功能说明二维码 -->
-        <div class="material-card">
-            <img src="AI思政课一点通功能说明二维码.png" alt="功能说明二维码" class="material-image">
-            <div class="material-content">
-                <div class="material-title">AI思政课功能说明二维码</div>
-                <div class="material-links">
-                    <a href="https://mp.weixin.qq.com/s/WNxxce2OUFOmBiDzEFxWGg">查看功能介绍</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 陈行甲AI心理医生项目 -->
-        <div class="material-card">
-            <img src="陈行甲AI心理医生·合影.png" alt="技术攻坚闭门会合影" class="material-image">
-            <div class="material-content">
-                <div class="material-title">陈行甲AI心理医生·技术攻坚闭门会合影</div>
-                <div class="material-links">
-                    <a href="https://mp.weixin.qq.com/s/b5IuYut652TlvLmTgL_VSA">查看项目新闻</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 讲座项目报道 -->
-        <div class="material-card">
-            <img src="讲座项目媒体报道封面集.jpg" alt="媒体报道封面集" class="material-image">
-            <div class="material-content">
-                <div class="material-title">讲座及项目媒体报道封面集</div>
-                <p>查看相关报道</p>
-            </div>
-        </div>
-
-        <!-- 录取至浙大2025 -->
-        <div class="material-card">
-            <img src="录取至浙大2025（首届）机器人班（导师：朱世强）.png" alt="强鹰2025机器人班" class="material-image">
-            <div class="material-content">
-                <div class="material-title">进入强鹰2025机器人班</div>
-                <div class="material-links">
-                    <a href="https://mp.weixin.qq.com/s/fKz-DCkmW9Fb2xciHbwe_w">查看相关新闻</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 浙大AI心理一点通 -->
-        <div class="material-card">
-            <img src="浙大AI思政课一点通招商介绍.jpg" alt="浙大AI思政课一点通公益推广" class="material-image">
-            <div class="material-content">
-                <div class="material-title">浙大AI思政课一点通公益推广（面向贵州都匀市政府）</div>
-                <p>面向政府、高校等机构开展AI专题讲座与培训</p>
-            </div>
-        </div>
-    </div>
-
-<table>
-    <thead>
-        <tr>
-            <th>模块</th>
-            <th>名称</th>
-            <th>相关链接</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>教材展示</td>
-            <td>大学生心理健康教育教程（数字教材）</td>
-            <td>
-                <a href="https://mp.weixin.qq.com/s/xUCfy6Q6l9oQAjh9yG-8AQ">查看教材相关报道</a> | 
-                <a href="https://zjupsyebook.godaddysites.com/">访问教材介绍网页</a>
-            </td>
-        </tr>
-        <tr>
-            <td>AI Agent产品</td>
-            <td>AI思政课一点通</td>
-            <td>
-                <a href="https://appbuilder.baidu.com/s/qgbCoWB5">体验AI思政课一点通</a>
-            </td>
-        </tr>
-        <tr>
-            <td>AI Agent产品</td>
-            <td>AI心理一点通</td>
-            <td>
-                <a href="https://appbuilder.bce.baidu.com/ai_apaas/share/home?short_code=Fu5W7RmrV8g&source=web">体验AI心理一点通</a>
-            </td>
-        </tr>
-        <tr>
-            <td>项目报道</td>
-            <td>AI思政课功能展示</td>
-            <td>
-                <a href="https://nicolazinx.github.io/">查看详细功能介绍</a>
-            </td>
-        </tr>
-        <tr>
-            <td>团队项目</td>
-            <td>强鹰2025机器人班</td>
-            <td>
-                <a href="https://mp.weixin.qq.com/s/IRvhDfASr6FAQVk_g7OhQw">了解项目详情</a>
-            </td>
-            <tr>
-            <td rowspan="6">项目报道与培训讲座</td>
-            <td>学术会议相关成果评优</td>
-            <td><a href="https://mp.weixin.qq.com/s/Gk9NAdyIuVkCY0GaOTzy8A">查看详情</a></td>
-        </tr>
-        <tr>
-            <td>浙大AI垂域模型建设与应用分享会</td>
-            <td><a href="https://mp.weixin.qq.com/s/HgG7fvp7UK-wRqhCTZ8w5Q">查看详情</a></td>
-        </tr>
-        <tr>
-            <td>街道AI创新应用实践与新质生产力宣讲</td>
-            <td><a href="https://mp.weixin.qq.com/s/p8jZi1feNg8ZyZWUv2IYzQ">查看详情</a></td>
-        </tr>
-        <tr>
-            <td>蒋村街道讲座及宣讲节选</td>
-            <td><a href="https://mp.weixin.qq.com/s/rHU3cxlx3eWsFrbjesuxLA">查看详情</a></td>
-        </tr>
-        <tr>
-            <td>走进中小学创新培训课程及宣讲节选</td>
-            <td><a href="https://mp.weixin.qq.com/s/pTEe01OOZ3fTvosIXuKg6g">查看详情</a></td>
-        </tr>
-        <tr>
-            <td>普华创投项目介绍（招商引资）</td>
-            <td><a href="https://mp.weixin.qq.com/s/YiQh9fBf5bIIJS98-be_FA">查看详情</a></td>
-        </tr>
-    </tbody>
-</table>
+        <table>
+            <thead>
+                <tr>
+                    <th>模块</th>
+                    <th>名称</th>
+                    <th>相关链接</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>教材展示</td>
+                    <td>大学生心理健康教育教程（数字教材）</td>
+                    <td>
+                        <a href="https://mp.weixin.qq.com/s/xUCfy6Q6l9oQAjh9yG-8AQ">查看教材相关报道</a> | 
+                        <a href="https://zjupsyebook.godaddysites.com/">访问教材介绍网页</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>AI Agent产品</td>
+                    <td>AI思政课一点通</td>
+                    <td>
+                        <a href="https://appbuilder.baidu.com/s/qgbCoWB5">体验AI思政课一点通</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>AI Agent产品</td>
+                    <td>AI心理一点通</td>
+                    <td>
+                        <a href="https://appbuilder.bce.baidu.com/ai_apaas/share/home?short_code=Fu5W7RmrV8g&source=web">体验AI心理一点通</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>项目报道</td>
+                    <td>AI思政课功能展示</td>
+                    <td>
+                        <a href="https://nicolazinx.github.io/">查看详细功能介绍</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>团队项目</td>
+                    <td>强鹰2025机器人班</td>
+                    <td>
+                        <a href="https://mp.weixin.qq.com/s/IRvhDfASr6FAQVk_g7OhQw">了解项目详情</a>
+                    </td>
+                    <tr>
+                    <td rowspan="6">项目报道与培训讲座</td>
+                    <td>学术会议相关成果评优</td>
+                    <td><a href="https://mp.weixin.qq.com/s/Gk9NAdyIuVkCY0GaOTzy8A">查看详情</a></td>
+                </tr>
+                <tr>
+                    <td>浙大AI垂域模型建设与应用分享会</td>
+                    <td><a href="https://mp.weixin.qq.com/s/HgG7fvp7UK-wRqhCTZ8w5Q">查看详情</a></td>
+                </tr>
+                <tr>
+                    <td>街道AI创新应用实践与新质生产力宣讲</td>
+                    <td><a href="https://mp.weixin.qq.com/s/p8jZi1feNg8ZyZWUv2IYzQ">查看详情</a></td>
+                </tr>
+                <tr>
+                    <td>蒋村街道讲座及宣讲节选</td>
+                    <td><a href="https://mp.weixin.qq.com/s/rHU3cxlx3eWsFrbjesuxLA">查看详情</a></td>
+                </tr>
+                <tr>
+                    <td>走进中小学创新培训课程及宣讲节选</td>
+                    <td><a href="https://mp.weixin.qq.com/s/pTEe01OOZ3fTvosIXuKg6g">查看详情</a></td>
+                </tr>
+                <tr>
+                    <td>普华创投项目介绍（招商引资）</td>
+                    <td><a href="https://mp.weixin.qq.com/s/YiQh9fBf5bIIJS98-be_FA">查看详情</a></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     </div>
+
+    <!-- 新增JavaScript代码 -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const clickableTexts = document.querySelectorAll('.clickable-text');
+        const contentAreas = document.querySelectorAll('.content-display-area');
+
+        clickableTexts.forEach(textElement => {
+            textElement.addEventListener('click', function (event) {
+                event.preventDefault(); // 阻止可能的默认行为，比如span在某些情况下可能被解释为锚点
+                const targetId = this.dataset.target; // 获取 data-target 属性的值
+                const currentTargetContentArea = document.getElementById(targetId);
+
+                // 检查当前点击的是否已经激活
+                const isAlreadyActive = currentTargetContentArea && currentTargetContentArea.classList.contains('active');
+
+                // 先隐藏所有内容区域并移除所有链接的 active 类
+                contentAreas.forEach(area => {
+                    area.classList.remove('active');
+                });
+                clickableTexts.forEach(el => el.classList.remove('active'));
+
+                // 如果当前点击的不是已激活的，或者希望再次点击能切换显示/隐藏
+                // 当前逻辑是：点击新的则显示新的，点击已显示的则隐藏它 (通过先全部隐藏实现)
+                // 如果希望点击已激活的文本链接来关闭其内容：
+                if (!isAlreadyActive && currentTargetContentArea) {
+                    currentTargetContentArea.classList.add('active');
+                    this.classList.add('active');
+                }
+                // 如果你希望点击已激活的链接时内容保持显示，而不是关闭，
+                // 则在上面的 if 条件后，即使 isAlreadyActive 为 true，也重新激活它：
+                // else if (isAlreadyActive && currentTargetContentArea) { // 如果希望点击已激活的链接时内容保持显示
+                //    currentTargetContentArea.classList.add('active');
+                //    this.classList.add('active');
+                // }
+            });
+        });
+    });
+    </script>
 </body>
 </html>
