@@ -1,0 +1,219 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #f8f9fa;
+            color: #343a40;
+            line-height: 1.6;
+        }
+        .container {
+            background: white;
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 24px;
+        }
+        .header h1 {
+            font-size: 2.2em;
+            color: #1a73e8;
+            margin-bottom: 12px;
+        }
+        .header h2 {
+            font-size: 1.4em;
+            color: #495057;
+            font-weight: 500;
+        }
+        .header p {
+            color: #6c757d;
+            font-size: 1.1em;
+        }
+        .section {
+            margin-bottom: 32px;
+        }
+        .section h3 {
+            color: #1a73e8;
+            font-size: 1.3em;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .section ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        .section li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        .section li:before {
+            content: "•";
+            color: #1a73e8;
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+        .highlight-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 16px 0;
+            border-left: 4px solid #1a73e8;
+        }
+        .courses {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+        .courses th, .courses td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .courses th {
+            background: #f8f9fa;
+            color: #1a73e8;
+        }
+        .tags {
+            margin-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tag {
+            background: #e8f0fe;
+            color: #1a73e8;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .courses {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>杨幸</h1>
+            <h2>浙江大学马克思主义学院 博士研究生 </h2>
+            <p>博导：马建青（二级教授 | 国家万人计划教学名师 | 国务院政府特殊津贴专家 | 求是特聘教授）</p>
+        </div>
+
+        <div class="section">
+            <h3>基本身份与任职情况</h3>
+            <ul>
+                <li>全国首部《大学生心理健康教育教程》数字教材副主编</li>
+                <li>“强鹰2025机器人班“入围者（浙江大学党委副书记朱世强导师组）</li>
+                <li>“AI思政课一点通”“AI心理一点通”“陈行甲AI心理医生”项目核心技术开发者</li>
+                <li>“齐家AI家庭心理教练”志愿网络主要成员</li>
+    <li>受邀于浙江科技大学、都匀市政府、皓石教育等开展AI专题课程讲授   </li>
+         </ul>
+        </div>
+
+        <div class="section">
+            <h3>专业方向与研究特色</h3>
+            <div class="highlight-box">
+                致力于打造中国高等教育场景中"可用、可信、可扩展"的垂直AI系统，具备强理论融合力与工程转化能力。专注于生成式人工智能在思想政治教育、心理健康、家庭育儿与教育技术融合领域的交叉应用。
+            </div>
+        </div>
+
+
+        <div class="section">
+            <h3>重大项目与成果</h3>
+            <ul>
+                <li>《大学生心理健康教育教程》副主编👩‍🏫 全国第一部AI心理素养数字教材</li>
+                <li>《AI思政课一点通》开发者 👩‍💻 覆盖10+高校，4.5k+用户，38w+交互量</li>
+                <li>《AI心理一点通》开发者 👩‍💻 部署于百度平台，"学在浙大"平台</li>
+     <li>《数字人“乐乐”系列》制作者🏂多模态AIGC考古个展，浙大吴飞教授点评点赞</li>
+                <li>《陈行甲AI心理医生》志愿者🏂核心技术协作者</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h3>推荐课程</h3>
+            <table class="courses">
+                <tbody><tr>
+                    <th>课程名称</th>
+                    <th>适配人群</th>
+                    <th>核心内容</th>
+                </tr>
+                <tr>
+                    <td>AIGC赋能基层宣传与短视频创作</td>
+                    <td>宣传干部/党务工作者</td>
+                    <td>掌握AI图文/短视频生成工具，党建宣传案例制作</td>
+                </tr>
+                <tr>
+                    <td>AI智能体在党建与心理服务中的融合应用</td>
+                    <td>政工心理双岗人员</td>
+                    <td>构建本地问答系统，心理+政策知识双向调度</td>
+                </tr>
+ <tr>
+                    <td>AI在专业技术及检索增强上的方便应用教学及实操</td>
+                    <td>技术口/办公室</td>
+                    <td>构建专业LLM，降低AI幻觉/掌握简单又高效的AI个性化应用开发</td>
+                </tr>
+
+                <tr>
+                    <td>AI辅助式教学系统设计与实操</td>
+                    <td>基层宣教员/教学负责人</td>
+                    <td>如何用AI做PPT/出题/答疑/定制化授课</td>
+                </tr>
+                <tr>
+                    <td>心理健康AI系统构建原理与实训</td>
+                    <td>心理委员/工会组织者</td>
+                    <td>危机初筛、共情对话、咨询流程模拟</td>
+                </tr>
+            </tbody></table>
+        </div>
+
+        <div class="tags">
+            <span class="tag">垂直大模型</span>
+            <span class="tag">RAG检索增强</span>
+            <span class="tag">智能体构建</span>
+            <span class="tag">Prompt工程</span>
+            <span class="tag">心理AI对话建模</span>
+            <span class="tag">AIGC内容创作</span>
+    <span class="tag">短视频制作</span>
+    <span class="tag">AI效率工具开发</span>
+             <span class="tag">教育交互系统设计</span>
+
+  </ul>
+
+        </div>
+
+
+   <div class="section">
+            <h3>   </h3>
+            <ul>
+                  <li></li>
+ <li>联系电话📞13476250119</li>
+                <li>  邮箱 ✉️psychologyxx2023@gmail.com</li>
+                            </ul>
+        </div>
+
+
+</body></html>
